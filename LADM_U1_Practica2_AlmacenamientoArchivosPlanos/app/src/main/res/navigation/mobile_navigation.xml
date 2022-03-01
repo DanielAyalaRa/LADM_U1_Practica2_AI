@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_insetar">
+
+    <fragment
+        android:id="@+id/nav_insetar"
+        android:name="mx.edu.ittepic.daar.ladm_u1_practica2_almacenamientoarchivosplanos.ui.insertar.InsertarFragment"
+        android:label="@string/menu_insetar"
+        tools:layout="@layout/fragment_insertar" />
+
+    <fragment
+        android:id="@+id/nav_mostrar"
+        android:name="mx.edu.ittepic.daar.ladm_u1_practica2_almacenamientoarchivosplanos.ui.mostrar.MostrarFragment"
+        android:label="@string/menu_mostrar"
+        tools:layout="@layout/fragment_mostrar" />
+
+    <fragment
+        android:id="@+id/nav_eliminar"
+        android:name="mx.edu.ittepic.daar.ladm_u1_practica2_almacenamientoarchivosplanos.ui.eliminar.EliminarFragment"
+        android:label="@string/menu_eliminar"
+        tools:layout="@layout/fragment_eliminar" />
+
+    <fragment
+        android:id="@+id/nav_actualizar"
+        android:name="mx.edu.ittepic.daar.ladm_u1_practica2_almacenamientoarchivosplanos.ui.actualizar.ActualizarFragment"
+        android:label="@string/menu_actualizar"
+        tools:layout="@layout/fragment_actualizar"/>
+</navigation>

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">LADM_U1_Practica2_AlmacenamientoArchivosPlanos</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Fruteria</string>
+    <string name="nav_header_subtitle">daalayalara@ittepic.edu.mx</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_acerca">Acerca de..</string>
+    <string name="action_salir">Salir</string>
+
+    <string name="menu_insetar">Insertar</string>
+    <string name="menu_mostrar">Mostrar</string>
+    <string name="menu_eliminar">Eliminar</string>
+    <string name="menu_actualizar">Lo más destacado</string>
+
+    <string-array name="arr_categoria">
+        <item>Frutas</item>
+        <item>Verduras</item>
+        <item>Cereales</item>
+        <item>Plasticos</item>
+        <item>Abarrotes</item>
+        <item>Lacteos</item>
+    </string-array>
+
+    <string-array name="arr_unidades">
+        <item>pz</item>
+        <item>gr</item>
+        <item>cajas</item>
+    </string-array>
+
+</resources>
