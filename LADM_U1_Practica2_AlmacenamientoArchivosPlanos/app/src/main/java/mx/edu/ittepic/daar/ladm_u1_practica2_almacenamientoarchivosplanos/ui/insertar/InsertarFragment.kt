@@ -40,8 +40,6 @@ class InsertarFragment : Fragment() {
         _binding = FragmentInsertarBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        if (segundaVez()) precargarDatos()
-
         leer()
         binding.btnInsertar.setOnClickListener {
             if (binding.nombre.text.toString() == "" || binding.precio.text.toString() == "" || binding.cantidad.text.toString() == "") {
@@ -52,9 +50,6 @@ class InsertarFragment : Fragment() {
             }else {
                 insertar()
             }
-        }
-        binding.btnGuardar.setOnClickListener {
-            guardar()
         }
         return root
     }
@@ -70,14 +65,10 @@ class InsertarFragment : Fragment() {
 
             objetoDatos.nombre = binding.nombre.text.toString()
             objetoDatos.precio = binding.precio.text.toString().toInt()
-            objetoDatos.cantidad = binding.cantidad.text.toString().toInt()
             objetoDatos.categoria = binding.categoria.selectedItem.toString()
+            objetoDatos.cantidad = binding.cantidad.text.toString().toInt()
             objetoDatos.unidad = binding.unidades.selectedItem.toString()
             productos.add(objetoDatos.contenido())
-
-            AlertDialog.Builder(requireContext())
-                .setMessage("SE HA INSERTADO")
-                .show()
 
             control = true
 
@@ -88,6 +79,8 @@ class InsertarFragment : Fragment() {
             binding.nombre.setText("")
             binding.precio.setText("")
             binding.cantidad.setText("")
+
+            guardar()
         } catch (e:Exception) {
             Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG)
         }
@@ -112,7 +105,11 @@ class InsertarFragment : Fragment() {
                 archivo.close()
 
                 AlertDialog.Builder(requireContext())
+                    .setTitle("INSERTAR")
                     .setMessage("SE HA GUARDADO CORRECTAMENTE")
+                    .setNeutralButton("ACEPTAR", {d,i->
+                        d.dismiss()
+                    })
                     .show()
 
                 control = false
@@ -126,17 +123,6 @@ class InsertarFragment : Fragment() {
                 .setNeutralButton("OK", {d,i-> d.dismiss()})
                 .show()
         }
-    }
-
-    private fun existe() : Boolean {
-        try {
-            val archivo = BufferedReader(InputStreamReader(context?.openFileInput("archivo.txt")))
-            if (archivo.read() == null) return false
-            archivo.close()
-        } catch (e:Exception) {
-            Toast.makeText(requireContext(),e.message, Toast.LENGTH_LONG)
-        }
-        return true
     }
 
     private fun leer() {
@@ -167,37 +153,5 @@ class InsertarFragment : Fragment() {
         } catch (e:Exception) {
             Toast.makeText(requireContext(),e.message, Toast.LENGTH_LONG)
         }
-    }
-
-    private fun precargarDatos() {
-        var dataVector =    "Manzanas,35,6,Frutas,pz\n"+"Fresas,120,1,Frutas,caja\n"+"Zanahorias,8,3,Verduras,costales\n"+"Jitomate,12,3,Verduras,cajas\n"+
-                            "Arroz,12,20,Abarrotes,pz\n"+"Maiz,25,1,Abarrotes,costal\n"+"Bolsas,60,10,Plasticos,pz\n"+"Vasos,18,8,Plasticos,pz\n"+
-                            "Tostadas,24,14,Abarrotes,pz\n"+"Chiles Verdes,28,4,Verduras,gr\n"+"Sandia,36,5,Frutas,pz\n"
-        var contador = "1"
-        try {
-            val archivo = OutputStreamWriter(requireActivity().openFileOutput("archivo.txt", 0))
-            archivo.write(dataVector)
-            archivo.flush()
-            archivo.close()
-
-            val contar = OutputStreamWriter(requireActivity().openFileOutput("contar.txt", 0))
-            contar.write(dataVector)
-            contar.flush()
-            contar.close()
-        } catch (e:java.lang.Exception) {
-            Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG)
-        }
-    }
-
-    fun segundaVez() :Boolean {
-        try {
-            val archivo = BufferedReader(InputStreamReader(context?.openFileInput("contar.txt")))
-            var cadena = archivo.readLine()
-            archivo.close()
-            if (cadena == null) return false
-        } catch (e:Exception) {
-            Toast.makeText(requireContext(),e.message, Toast.LENGTH_LONG)
-        }
-        return true
     }
 }

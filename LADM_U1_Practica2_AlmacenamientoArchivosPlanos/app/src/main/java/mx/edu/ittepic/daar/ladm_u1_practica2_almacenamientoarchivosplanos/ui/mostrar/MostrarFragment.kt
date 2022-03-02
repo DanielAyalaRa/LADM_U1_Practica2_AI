@@ -24,6 +24,8 @@ class MostrarFragment : Fragment() {
     private val binding get() = _binding!!
     val vector = ArrayList<Data>()
     var productos = ArrayList<String>()
+    val productosList = ArrayList<String>()
+    var aux : List<String> = listOf("Productos","0","Frutas","0","pz")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +39,10 @@ class MostrarFragment : Fragment() {
         val root: View = binding.root
 
         leer()
+
+        val adapter = CustomAdapter(vector)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
 
         return root
     }
@@ -68,7 +74,37 @@ class MostrarFragment : Fragment() {
                 productos.add(separar[it])
             }
 
-            binding.listaMostrar.adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, productos)
+            var index = productos.size-1
+            productos.removeAt(index)
+
+            //Hasta aqui el txt ya esta en una lista pero aun los valores no estan separados por parametro
+
+            (0..productos.size-1).forEach {
+                productosList.add(productos[it].split(",").toString())
+            }
+
+            //Filtrado de cadena
+
+            (0..productosList.size-1).forEach {
+                productosList[it] = productosList.get(it).toString().replace("[","")
+                productosList[it] = productosList.get(it).toString().replace("]","")
+
+                aux = productosList.get(it).split(",")
+
+                var nombre = aux[0].toString().trim()
+                var precio = aux[1].toString().trim().toInt()
+                var categoria = aux[2].toString().trim()
+                var cantidad = aux[3].toString().trim().toInt()
+                var unidad = aux[4].toString().trim()
+
+                var objetoDatos = Data()
+                objetoDatos.nombre = nombre
+                objetoDatos.precio = precio
+                objetoDatos.categoria = categoria
+                objetoDatos.cantidad = cantidad
+                objetoDatos.unidad = unidad
+                vector.add(objetoDatos)
+            }
         } catch (e:Exception) {
             Toast.makeText(requireContext(),e.message, Toast.LENGTH_LONG)
         }

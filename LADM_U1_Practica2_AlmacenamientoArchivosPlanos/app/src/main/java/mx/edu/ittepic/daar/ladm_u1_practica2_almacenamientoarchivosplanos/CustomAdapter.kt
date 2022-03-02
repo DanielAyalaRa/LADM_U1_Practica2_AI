@@ -13,51 +13,56 @@ import androidx.recyclerview.widget.RecyclerView
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class CustomAdapter : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val data:List<Data>) : RecyclerView.Adapter<CustomAdapter.ProductosViewHolder>() {
 
-    val productos = arrayOf("Manzana","Zanahorias","Bolsas","Arroz")
-    val precio = arrayOf("$35.0","$8.00","$60.00","$12")
-    val categoria = arrayOf("Frutas","Verduras","Plasticos","Abarrotes")
-    val cantidad = arrayOf("6","3","10","20")
-    val unidad = arrayOf("pz","costales","pz","pz")
-    val images = intArrayOf(R.drawable.frutas,
-        R.drawable.verduras,
-        R.drawable.plasticos,
-        R.drawable.cereal)
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ProductosViewHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_layout, viewGroup, false)
-        return ViewHolder(v)
+        return ProductosViewHolder(v)
     }
 
-    override fun onBindViewHolder(viewHolder : ViewHolder, i: Int) {
-        viewHolder.itemNombre.text = productos[i]
-        viewHolder.itemPrecio.text = precio[i].toString()
-        viewHolder.itemCategoria.text = categoria[i]
-        viewHolder.itemCantidad.text = cantidad[i].toString()
-        viewHolder.itemUnidad.text = unidad[i]
-        viewHolder.itemImage.setImageResource(images[i])
+    override fun onBindViewHolder(holder : ProductosViewHolder, i: Int) {
+        val item = data[i]
+        holder.render(item)
     }
 
     override fun getItemCount(): Int {
-        return productos.size
+        return data.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemImage : ImageView
-        var itemNombre : TextView
-        var itemPrecio : TextView
-        var itemCategoria : TextView
-        var itemCantidad : TextView
-        var itemUnidad : TextView
+    inner class ProductosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var itemImage = itemView.findViewById<ImageView>(R.id.item_image)
+        var itemNombre = itemView.findViewById<TextView>(R.id.item_nombre)
+        var itemPrecio = itemView.findViewById<TextView>(R.id.item_precio)
+        var itemCategoria = itemView.findViewById<TextView>(R.id.item_categoria)
+        var itemCantidad = itemView.findViewById<TextView>(R.id.item_cantidad)
+        var itemUnidad = itemView.findViewById<TextView>(R.id.item_unidad)
+        var itemPeso = itemView.findViewById<TextView>(R.id.item_peso)
 
-        init {
-            itemImage = itemView.findViewById(R.id.item_image)
-            itemNombre = itemView.findViewById(R.id.item_nombre)
-            itemPrecio = itemView.findViewById(R.id.item_precio)
-            itemCategoria = itemView.findViewById(R.id.item_categoria)
-            itemCantidad = itemView.findViewById(R.id.item_cantidad)
-            itemUnidad = itemView.findViewById(R.id.item_unidad)
+        fun render(producto: Data) {
+            when (producto.categoria){
+                "Frutas" -> {
+                    itemImage.setImageResource(R.drawable.frutas)
+                }
+                "Verduras" -> {
+                    itemImage.setImageResource(R.drawable.verduras)
+                }
+                "Cereales" -> {
+                    itemImage.setImageResource(R.drawable.cereal)
+                }
+                "Plasticos" -> {
+                    itemImage.setImageResource(R.drawable.plasticos)
+                }
+                "Abarrotes" -> {
+                    itemImage.setImageResource(R.drawable.fruteria)
+                }
+            }
+
+            itemNombre.text = producto.nombre
+            itemPrecio.text = producto.precio.toString()
+            itemCategoria.text = producto.categoria
+            itemCantidad.text = producto.cantidad.toString()
+            itemUnidad.text = producto.unidad
+            itemPeso.text = "$"
         }
     }
 }

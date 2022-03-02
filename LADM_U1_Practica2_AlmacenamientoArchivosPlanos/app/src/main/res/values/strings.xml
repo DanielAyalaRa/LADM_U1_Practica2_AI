@@ -19,13 +19,13 @@
         <item>Cereales</item>
         <item>Plasticos</item>
         <item>Abarrotes</item>
-        <item>Lacteos</item>
     </string-array>
 
     <string-array name="arr_unidades">
         <item>pz</item>
         <item>gr</item>
         <item>cajas</item>
+        <item>costales</item>
     </string-array>
 
 </resources>

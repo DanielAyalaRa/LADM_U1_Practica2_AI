@@ -98,32 +98,13 @@
         android:entries="@array/arr_unidades"
         />
 
-    <TableLayout
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
-        <TableRow>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:layout_marginRight="30dp"
-                android:textStyle="bold"
-                android:id="@+id/btnInsertar"
-                android:text="Insertar"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="30dp"
-                android:textStyle="bold"
-                android:id="@+id/btnGuardar"
-                android:text="Guardar"/>
-        </TableRow>
-    </TableLayout>
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:id="@+id/btnInsertar"
+        android:text="Insertar"/>
 
     <ListView
         android:layout_width="match_parent"
