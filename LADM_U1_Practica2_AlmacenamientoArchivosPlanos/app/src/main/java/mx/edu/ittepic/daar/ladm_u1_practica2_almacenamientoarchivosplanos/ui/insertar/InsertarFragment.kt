@@ -87,7 +87,6 @@ class InsertarFragment : Fragment() {
     }
 
     private fun guardar() {
-        if (control == true) {
             var dataVector = ""
             var total = productos.size-1
 
@@ -105,24 +104,15 @@ class InsertarFragment : Fragment() {
                 archivo.close()
 
                 AlertDialog.Builder(requireContext())
-                    .setTitle("INSERTAR")
+                    .setTitle("ACTUALIZAR")
                     .setMessage("SE HA GUARDADO CORRECTAMENTE")
                     .setNeutralButton("ACEPTAR", {d,i->
                         d.dismiss()
                     })
                     .show()
-
-                control = false
             } catch (e:java.lang.Exception) {
                 Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG)
             }
-        } else {
-            AlertDialog.Builder(requireContext())
-                .setTitle("NO INSERCIÓN")
-                .setMessage("No se ha insertado producto aún.")
-                .setNeutralButton("OK", {d,i-> d.dismiss()})
-                .show()
-        }
     }
 
     private fun leer() {

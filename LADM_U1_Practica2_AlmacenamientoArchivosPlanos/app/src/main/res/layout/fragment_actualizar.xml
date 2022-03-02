@@ -11,37 +11,99 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sobre Nosotros"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:background="@color/naranja"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="32dp"/>
+        android:textSize="28sp"
+        android:text="Actualizar productos"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Daniel Alejandro Ayala Ramirez"
-        android:layout_marginTop="40dp"
+        android:textSize="18dp"
+        android:text="Nombre:"
         android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="18dp"/>
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del producto"
+        android:id="@+id/nombre"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="daalayalara@ittepic.edu.mx"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:text="Precio:"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Precio del producto"
+        android:inputType="numberDecimal"
+        android:id="@+id/precio"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:text="Cantidad:"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cantidad"
+        android:inputType="number"
+        android:id="@+id/cantidad"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:text="Categoria:"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/arr_categoria"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/categoria"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:text="Unidades:"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/unidades"
+        android:layout_marginLeft="10dp"
+        android:entries="@array/arr_unidades"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="18dp"/>
+        android:textStyle="bold"
+        android:id="@+id/btnActualizar"
+        android:text="Actualizar datos"/>
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Materia: LAMD"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="18dp"/>
+        android:id="@+id/listaActualizar"/>
 
 </LinearLayout>

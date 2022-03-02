@@ -39,6 +39,12 @@ class CustomAdapter(private val data:List<Data>) : RecyclerView.Adapter<CustomAd
         var itemPeso = itemView.findViewById<TextView>(R.id.item_peso)
 
         fun render(producto: Data) {
+            itemNombre.text = producto.nombre
+            itemPrecio.text = producto.precio.toString()
+            itemCategoria.text = producto.categoria
+            itemCantidad.text = producto.cantidad.toString()
+            itemUnidad.text = producto.unidad
+            itemPeso.text = "$"
             when (producto.categoria){
                 "Frutas" -> {
                     itemImage.setImageResource(R.drawable.frutas)
@@ -56,13 +62,6 @@ class CustomAdapter(private val data:List<Data>) : RecyclerView.Adapter<CustomAd
                     itemImage.setImageResource(R.drawable.fruteria)
                 }
             }
-
-            itemNombre.text = producto.nombre
-            itemPrecio.text = producto.precio.toString()
-            itemCategoria.text = producto.categoria
-            itemCantidad.text = producto.cantidad.toString()
-            itemUnidad.text = producto.unidad
-            itemPeso.text = "$"
         }
     }
 }
